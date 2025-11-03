@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --bg-color: #0e1111;
+  --card-bg: #1a1f1f;
+  --primary: #4ade80;
+  --primary-hover: #22c55e;
+  --text-color: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #2d2d2d;
+  --radius: 16px;
+  --transition: all 0.25s ease;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 50px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  width: 90%;
+  max-width: 950px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.perfil {
+  text-align: center;
+}
+
+.perfil img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button {
+  background-color: var(--primary);
+  color: #0e1111;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 40px;
+  opacity: 0.6;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+@media (max-width: 800px) {
+  .container { grid-template-columns: 1fr; text-align: center; }
+}

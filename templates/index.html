@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda una Cita</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+  <div class="container fade-in">
+    <div class="perfil">
+      <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Perfil">
+      <h2>Lizy Crisosto</h2>
+      <p>Reserva una cita conmigo 🌿</p>
+      <p style="color:var(--muted);font-size:13px;">Duración aproximada: 1-2 horas</p>
+      <hr style="border:1px solid var(--border);margin:20px 0;">
+      <p><strong>Disponibilidad:</strong><br>
+        Lunes a Sábado: 13:00 - 21:00
+      </p>
+    </div>
+
+    <form method="POST" action="/agendar">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" required>
+
+      <label>Teléfono:</label>
+      <input type="tel" name="telefono" required>
+
+      <label>Fecha:</label>
+      <input type="date" name="fecha" required>
+
+      <label>Hora:</label>
+      <input type="time" name="hora" required>
+
+      <label>Notas:</label>
+      <textarea name="nota" rows="3" placeholder="¿Hay algo específico que te gustaría hacer?"></textarea>
+
+      <button type="submit">Confirmar Cita</button>
+    </form>
+  </div>
+
+  <div class="footer">
+    &copy; TQM
+  </div>
+</body>
+</html>

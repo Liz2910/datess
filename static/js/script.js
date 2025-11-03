@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
-  let currentStep = 0;
   const fechaInput = document.getElementById("fechaSeleccionada");
   const horaInput = document.getElementById("horaSeleccionada");
   const fechaTxt = document.getElementById("fechaElegidaTxt");
-  const resumenTxt = document.getElementById("resumenTxt");
+
+  const resumenTxtFecha = document.getElementById("resumenTxtFecha");
+  const resumenTxtHora = document.getElementById("resumenTxtHora");
+  const resumenFechaPanel = document.getElementById("resumen-fecha");
+  const resumenHoraPanel = document.getElementById("resumen-hora");
 
   const showStep = (i) => {
     steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
-    currentStep = i;
   };
 
   // === CALENDARIO ===
@@ -24,11 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.createElement("button");
     btn.textContent = `${dia} / ${mes}`;
     btn.dataset.full = date.toISOString().split("T")[0];
-    btn.dataset.display = date.toLocaleDateString("es-MX", { day: "2-digit", month: "2-digit", year: "numeric" });
+    btn.dataset.display = date.toLocaleDateString("es-MX", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
 
     btn.onclick = () => {
-      document.querySelectorAll("#calendar button").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll("#calendar button").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
+      // guardamos fecha en el hidden
       fechaInput.value = btn.dataset.full;
       fechaInput.dataset.display = btn.dataset.display;
     };
@@ -47,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const horaActual = ahora.getHours();
     let disponibles = [...allHours];
 
+    // si es hoy, quitamos horas pasadas
     if (fechaInput.value === hoyISO) {
-      disponibles = allHours.filter(h => parseInt(h.split(":")[0]) > horaActual);
+      disponibles = allHours.filter((h) => parseInt(h.split(":")[0]) > horaActual);
     }
 
     if (disponibles.length === 0) {
@@ -59,24 +67,28 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    disponibles.forEach(h => {
+    disponibles.forEach((h) => {
       const btn = document.createElement("button");
       btn.textContent = h;
       btn.onclick = () => {
-        document.querySelectorAll("#hours button").forEach(b => b.classList.remove("active"));
+        // marcamos activo
+        document.querySelectorAll("#hours button").forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        const hFin = `${String(parseInt(h.split(":")[0]) + 2).padStart(2, "0")}:00`;
-        horaInput.value = `${h} - ${hFin}`;
 
-        // formatear fecha completa (dd/mm/yyyy)
+        // calculamos horario de 2 horas
+        const hFin = `${String(parseInt(h.split(":")[0]) + 2).padStart(2, "0")}:00`;
+        const rango = `${h} - ${hFin}`;
+        horaInput.value = rango;
+
+        // formateamos la fecha guardada (YYYY-MM-DD -> DD/MM/YYYY)
         const [year, month, day] = fechaInput.value.split("-");
         const fechaFormateada = `${day}/${month}/${year}`;
 
-        // actualizar texto del resumen
-        document.getElementById("resumenTxtFecha").textContent = fechaFormateada;
-        document.getElementById("resumenTxtHora").textContent = horaInput.value;
-        document.getElementById("resumen-fecha").textContent = fechaFormateada;
-        document.getElementById("resumen-hora").textContent = horaInput.value;
+        // pintamos en los lugares correctos
+        if (resumenTxtFecha) resumenTxtFecha.textContent = fechaFormateada;
+        if (resumenTxtHora) resumenTxtHora.textContent = rango;
+        if (resumenFechaPanel) resumenFechaPanel.textContent = fechaFormateada;
+        if (resumenHoraPanel) resumenHoraPanel.textContent = rango;
       };
       hoursGrid.appendChild(btn);
     });
@@ -85,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // === NAVEGACIÓN ===
   document.getElementById("btnFecha").onclick = () => {
     if (!fechaInput.value) return alert("Selecciona una fecha 🌿");
-    fechaTxt.textContent = `Has elegido el ${fechaInput.dataset.display}`;
+    // mostrar en el subtítulo del paso 2
+    if (fechaTxt) fechaTxt.textContent = `Has elegido el ${fechaInput.dataset.display}`;
     generarHoras();
     showStep(1);
   };
@@ -94,9 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("btnHora").onclick = () => {
     if (!horaInput.value) return alert("Selecciona una hora 💚");
-    resumenTxt.innerHTML = `
-      <span>📅 ${fechaInput.dataset.display}</span> |
-      <span>🕒 ${horaInput.value}</span>`;
+    // ya tenemos todo pintado, solo avanzar
     showStep(2);
   };
 

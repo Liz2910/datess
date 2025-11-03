@@ -67,9 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("active");
         const hFin = `${String(parseInt(h.split(":")[0]) + 2).padStart(2, "0")}:00`;
         horaInput.value = `${h} - ${hFin}`;
-        resumenTxt.innerHTML = `
-          <span>📅 ${fechaInput.dataset.display}</span> |
-          <span>🕒 ${horaInput.value}</span>`;
+
+        // formatear fecha completa (dd/mm/yyyy)
+        const [year, month, day] = fechaInput.value.split("-");
+        const fechaFormateada = `${day}/${month}/${year}`;
+
+        // actualizar texto del resumen
+        document.getElementById("resumenTxtFecha").textContent = fechaFormateada;
+        document.getElementById("resumenTxtHora").textContent = horaInput.value;
+        document.getElementById("resumen-fecha").textContent = fechaFormateada;
+        document.getElementById("resumen-hora").textContent = horaInput.value;
       };
       hoursGrid.appendChild(btn);
     });

@@ -294,3 +294,49 @@ button.volver {
 button.volver:hover {
   background: var(--primary-hover);
 }
+/* === Paso 3: Estilo mejorado === */
+.seleccion-resumen {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.resumen-cita {
+  background: #111414;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-top: 30px;
+  padding: 22px 26px;
+}
+
+.resumen-cita h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 17px;
+}
+
+.resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+}
+
+.resumen-grid p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  font-size: 15px;
+}

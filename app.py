@@ -19,5 +19,15 @@ def agendar():
 
     return render_template('confirmacion.html', nombre=nombre, fecha=fecha, hora=hora)
 
+from datetime import datetime
+
+@app.template_filter('datetimeformat')
+def datetimeformat(value, format='%d/%m/%Y'):
+    try:
+        return datetime.strptime(value, '%Y-%m-%d').strftime(format)
+    except Exception:
+        return value
+
+
 if __name__ == '__main__':
     app.run()

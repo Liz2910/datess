@@ -19,24 +19,44 @@
       </p>
     </div>
 
-    <form method="POST" action="/agendar">
-      <label>Nombre:</label>
-      <input type="text" name="nombre" placeholder="Tu nombre completo" required>
+    <form id="citaForm" method="POST" action="/agendar">
+  <!-- Paso 1: Seleccionar fecha -->
+  <div class="step active" id="step-fecha">
+    <h3>Selecciona una fecha</h3>
+    <p>Elige el día que mejor te convenga para la cita</p>
+    <div class="calendar-grid" id="calendar"></div>
+    <button type="button" class="next-btn" id="btnFecha">Siguiente</button>
+  </div>
 
-      <label>Teléfono:</label>
-      <input type="tel" name="telefono" placeholder="Ej. 3312345678" required>
+  <!-- Paso 2: Seleccionar hora -->
+  <div class="step" id="step-hora">
+    <h3>Selecciona una hora</h3>
+    <p>Elige el horario disponible</p>
+    <div class="hours-grid" id="hours"></div>
+    <button type="button" class="prev-btn" id="btnVolver1">Atrás</button>
+    <button type="button" class="next-btn" id="btnHora">Siguiente</button>
+  </div>
 
-      <label>Fecha:</label>
-      <input type="date" name="fecha" required>
+  <!-- Paso 3: Datos personales -->
+  <div class="step" id="step-datos">
+    <h3>Tus datos</h3>
+    <input type="hidden" name="fecha" id="fechaSeleccionada">
+    <input type="hidden" name="hora" id="horaSeleccionada">
 
-      <label>Hora:</label>
-      <input type="time" name="hora" required>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" placeholder="Tu nombre completo" required>
 
-      <label>Notas:</label>
-      <textarea name="nota" rows="3" placeholder="¿Hay algo específico que te gustaría hacer?"></textarea>
+    <label>Teléfono:</label>
+    <input type="tel" name="telefono" placeholder="Ej. 3312345678" required>
 
-      <button type="submit">Confirmar Cita</button>
-    </form>
+    <label>Notas:</label>
+    <textarea name="nota" rows="3" placeholder="¿Algo específico que te gustaría hacer?"></textarea>
+
+    <button type="button" class="prev-btn" id="btnVolver2">Atrás</button>
+    <button type="submit" class="next-btn">Confirmar Cita</button>
+  </div>
+</form>
+
   </div>
 
   <div class="footer">

@@ -140,3 +140,116 @@ button:hover {
     text-align: center;
   }
 }
+
+/* === Wizard steps === */
+.step { display: none; }
+.step.active { display: block; }
+
+h3 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+/* === Calendario de fechas === */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.calendar-grid button {
+  background: #111414;
+  border: 1px solid var(--border);
+  color: var(--text-color);
+  padding: 14px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.calendar-grid button:hover,
+.calendar-grid button.active {
+  background: var(--primary);
+  color: #0e1111;
+}
+
+/* === Horas === */
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.hours-grid button {
+  background: #111414;
+  border: 1px solid var(--border);
+  color: var(--text-color);
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.hours-grid button:hover,
+.hours-grid button.active {
+  background: var(--primary);
+  color: #0e1111;
+}
+
+/* === Botones de navegación === */
+.next-btn,
+.prev-btn {
+  background: var(--primary);
+  color: #0e1111;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 10px;
+}
+
+.prev-btn {
+  background: #333;
+  color: #ccc;
+  margin-right: 10px;
+}
+
+.next-btn:hover { background: var(--primary-hover); }
+
+/* === Confirmación centrada === */
+.container-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.container-confirm h2 {
+  margin-top: 10px;
+}
+
+.container-confirm p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+button.volver {
+  background: var(--primary);
+  color: #0e1111;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button.volver:hover { background: var(--primary-hover); }

@@ -6,18 +6,14 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <div class="container fade-in">
-    <div class="perfil">
-      <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Perfil">
-      <h2>¡Cita Confirmada!</h2>
-      <p>Gracias, <strong>{{ nombre }}</strong>. Tu cita se ha registrado con éxito 💚</p>
-      <p><strong>Fecha:</strong> {{ fecha }}</p>
-      <p><strong>Hora:</strong> {{ hora }}</p>
-      <a href="/" style="display:inline-block;margin-top:20px;">
-        <button>Volver al inicio</button>
-      </a>
-    </div>
-  </div>
+  <div class="container-confirm fade-in">
+  <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Perfil" style="width:120px;height:120px;border-radius:50%;border:3px solid var(--primary);object-fit:cover;">
+  <h2>¡Cita Confirmada!</h2>
+  <p>Gracias, <strong>{{ nombre }}</strong>. Tu cita se ha registrado con éxito 💚</p>
+  <p><strong>Fecha:</strong> {{ fecha }}</p>
+  <p><strong>Hora:</strong> {{ hora }}</p>
+  <a href="/"><button class="volver">Agendar otra cita</button></a>
+</div>
   <div class="footer">
     &copy; TQM
   </div>

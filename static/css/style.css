@@ -340,13 +340,62 @@ button.volver:hover {
   padding: 14px;
   font-size: 15px;
 }
+/* === Sección de notas === */
+.nota-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 
-<div class="container-confirm fade-in">
-  <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Perfil" style="width:120px;height:120px;border-radius:50%;border:3px solid var(--primary);object-fit:cover;">
-  <h2>¡Cita Confirmada!</h2>
-  <p>Gracias, <strong>{{ nombre }}</strong>. Tu cita se ha registrado con éxito 💚</p>
-  <p><strong>Fecha:</strong> {{ fecha | datetimeformat('%d/%m/%Y') }}</p>
-  <p><strong>Horario:</strong> {{ hora }}</p>
-  <p>Me pondré en contacto contigo para confirmar disponibilidad 🌿</p>
-  <a href="/"><button class="volver">Agendar otra cita</button></a>
-</div>
+.nota-section label {
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+/* === Botones armonizados === */
+.nav-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.prev-btn,
+.next-btn {
+  flex: 1;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.prev-btn {
+  background: #2b2b2b;
+  color: var(--muted);
+}
+
+.prev-btn:hover {
+  background: #3b3b3b;
+  color: #fff;
+}
+
+.next-btn {
+  background: var(--primary);
+  color: #0e1111;
+}
+
+.next-btn:hover {
+  background: var(--primary-hover);
+}
+
+.full-btn {
+  flex: 1;
+  width: auto;
+}

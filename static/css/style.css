@@ -340,3 +340,13 @@ button.volver:hover {
   padding: 14px;
   font-size: 15px;
 }
+
+<div class="container-confirm fade-in">
+  <img src="{{ url_for('static', filename='img/perfil.jpg') }}" alt="Perfil" style="width:120px;height:120px;border-radius:50%;border:3px solid var(--primary);object-fit:cover;">
+  <h2>¡Cita Confirmada!</h2>
+  <p>Gracias, <strong>{{ nombre }}</strong>. Tu cita se ha registrado con éxito 💚</p>
+  <p><strong>Fecha:</strong> {{ fecha | datetimeformat('%d/%m/%Y') }}</p>
+  <p><strong>Horario:</strong> {{ hora }}</p>
+  <p>Me pondré en contacto contigo para confirmar disponibilidad 🌿</p>
+  <a href="/"><button class="volver">Agendar otra cita</button></a>
+</div>

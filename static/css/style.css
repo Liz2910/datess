@@ -95,22 +95,6 @@ form {
   gap: 15px;
 }
 
-/* === Botones generales === */
-button {
-  background-color: var(--primary);
-  color: #0e1111;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-button:hover {
-  background-color: var(--primary-hover);
-}
-
 /* === Footer === */
 .footer {
   text-align: center;
@@ -159,7 +143,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin: 20px 0;
+  margin: 25px 0 35px;
 }
 
 .calendar-grid button {
@@ -186,7 +170,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 12px;
-  margin: 20px 0;
+  margin: 25px 0 35px;
 }
 
 .hours-grid button {
@@ -206,41 +190,56 @@ h3 {
   color: #0e1111;
 }
 
-/* === Navegación === */
+/* === Navegación y botones === */
 .nav-btns {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+  gap: 20px;
 }
 
-.next-btn,
-.prev-btn {
-  padding: 12px 26px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: var(--transition);
-}
-
+.prev-btn,
 .next-btn {
-  background: var(--primary);
-  color: #0e1111;
-}
-
-.next-btn:hover {
-  background: var(--primary-hover);
+  flex: 1;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
 .prev-btn {
-  background: #2b2b2b;
+  background: rgba(43, 43, 43, 0.8);
   color: var(--muted);
 }
 
 .prev-btn:hover {
-  background: #3b3b3b;
+  background: rgba(60, 60, 60, 0.9);
   color: #fff;
+  transform: translateY(-1px);
+}
+
+.next-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #0e1111;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.next-btn:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #4ade80);
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.full-btn {
+  flex: 1;
+  width: auto;
 }
 
 /* === Grid de datos === */
@@ -251,55 +250,27 @@ h3 {
   margin: 20px 0;
 }
 
-/* === Texto auxiliar === */
-.muted {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-/* === Confirmación === */
-.container-confirm {
+/* === Sección de notas === */
+.nota-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 80vh;
-}
-
-.container-confirm h2 {
+  gap: 8px;
   margin-top: 15px;
-  font-size: 26px;
+  margin-bottom: 20px;
 }
 
-.container-confirm p {
-  color: var(--muted);
+.nota-section label {
+  font-weight: 500;
+  color: var(--text-color);
   font-size: 15px;
-  margin: 6px 0;
 }
 
-button.volver {
-  background: var(--primary);
-  color: #0e1111;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  margin-top: 20px;
-}
-
-button.volver:hover {
-  background: var(--primary-hover);
-}
-/* === Paso 3: Estilo mejorado === */
+/* === Resumen de cita === */
 .seleccion-resumen {
   display: flex;
   gap: 25px;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 15px;
   color: var(--text-color);
   font-size: 15px;
@@ -311,7 +282,7 @@ button.volver:hover {
   border-radius: 12px;
   border: 1px solid var(--border);
   margin-top: 30px;
-  padding: 22px 26px;
+  padding: 24px 28px;
 }
 
 .resumen-cita h4 {
@@ -334,68 +305,51 @@ button.volver:hover {
   color: var(--text-color);
 }
 
-.full-btn {
-  width: 100%;
-  margin-top: 25px;
-  padding: 14px;
-  font-size: 15px;
+/* === Texto auxiliar === */
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 10px;
 }
-/* === Sección de notas === */
-.nota-section {
+
+/* === Confirmación === */
+.container-confirm {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.nota-section label {
-  font-weight: 500;
-  color: var(--text-color);
-  font-size: 15px;
-}
-
-/* === Botones armonizados === */
-.nav-btns {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
-  gap: 15px;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 20px;
 }
 
-.prev-btn,
-.next-btn {
-  flex: 1;
-  padding: 14px 0;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  transition: var(--transition);
+.container-confirm h2 {
+  margin-top: 15px;
+  font-size: 26px;
 }
 
-.prev-btn {
-  background: #2b2b2b;
+.container-confirm p {
   color: var(--muted);
+  font-size: 15px;
+  margin: 6px 0;
 }
 
-.prev-btn:hover {
-  background: #3b3b3b;
-  color: #fff;
-}
-
-.next-btn {
-  background: var(--primary);
+button.volver {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
   color: #0e1111;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 25px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.35);
 }
 
-.next-btn:hover {
-  background: var(--primary-hover);
-}
-
-.full-btn {
-  flex: 1;
-  width: auto;
+button.volver:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #4ade80);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.45);
 }
